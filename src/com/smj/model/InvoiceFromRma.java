@@ -152,7 +152,7 @@ public class InvoiceFromRma {
     	MInOut pInOut = new MInOut(Env.getCtx(), inOutId, trx.getTrxName() );
     	
     	MInvoice data = new MInvoice(Env.getCtx(), 0, null);
-    	//data.setAD_Client_ID(Integer.parseInt(to.get("ad_client_id").trim()));
+    	data.setAD_Client_ID(Integer.parseInt(to.get("ad_client_id").trim()));
     	data.setAD_Org_ID(Integer.parseInt(to.get("ad_org_id").trim()));
 		data.setIsActive(true);
 		data.setDateInvoiced(new Timestamp((new Date().getTime())));
@@ -194,7 +194,7 @@ public class InvoiceFromRma {
 			{
 				MInvoiceLine line = new MInvoiceLine(Env.getCtx(), 0, null);
 				line.setAD_Org_ID(Integer.parseInt(to.get("ad_org_id").trim()));
-				//line.setAD_Client_ID(Integer.parseInt(to.get("ad_client_id").trim()));
+				line.setAD_Client_ID(Integer.parseInt(to.get("ad_client_id").trim()));
 				line.setIsActive(true);
 				line.setC_Invoice_ID(invoice.getC_Invoice_ID());
 				line.setQtyEntered((new BigDecimal(to.get("Qty"))));
