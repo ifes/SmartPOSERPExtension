@@ -90,7 +90,7 @@ public int getProductBomId(int productId, Trx trx,Properties ctx) {
 			HashMap<String, Object> to, Properties ctx) {
 		X_M_Production producction = new X_M_Production(ctx, 0, trx.getTrxName());
 
-		producction.setAD_Client_ID((Integer)to.get("ad_client_id"));
+		//producction.setAD_Client_ID((Integer)to.get("ad_client_id"));
 		producction.setAD_Org_ID((Integer)to.get("ad_org_id"));
 		producction.setIsActive(true);
 		producction.setName((String)to.get("productID") + " " + (new Date()));
@@ -109,7 +109,7 @@ public int getProductBomId(int productId, Trx trx,Properties ctx) {
 		X_M_ProductionPlan pp = new X_M_ProductionPlan(ctx, 0, trx.getTrxName());
 		
 		pp.setLine(10);
-		pp.setAD_Client_ID((Integer)to.get("ad_client_id"));
+		//pp.setAD_Client_ID((Integer)to.get("ad_client_id"));
 		pp.setAD_Org_ID((Integer)to.get("ad_org_id"));
 		pp.setM_Product_ID( productId);
 		pp.setProductionQty(qty);
@@ -135,7 +135,7 @@ public int getProductBomId(int productId, Trx trx,Properties ctx) {
 
 		for (X_M_ProductionPlan pp : lines) {
 
-			if (!production.isCreated()) {
+			if (production.getIsCreated().equals("Y")) {
 				int line = 100;
 				int no = DB.executeUpdateEx(
 								"DELETE M_ProductionLine WHERE M_ProductionPlan_ID = ?",
@@ -214,7 +214,9 @@ public int getProductBomId(int productId, Trx trx,Properties ctx) {
 		} // Production Plan
 
 		if (!production.isCreated()) {
-			production.setIsCreated(true);
+			// no name Grupo- seteamos con un string
+			
+			production.setIsCreated("IsCreated");
 			production.saveEx();
 		} else {
 			production.setProcessed(true);

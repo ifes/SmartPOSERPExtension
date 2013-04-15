@@ -64,7 +64,9 @@ public class RmaFromInOut {
 		MInOut pInOut = new MInOut(Env.getCtx(), inOutId, trx.getTrxName() );
 		
 		MRMA rma = new MRMA(Env.getCtx(), 0, trx.getTrxName());
-		rma.setAD_Client_ID(Integer.parseInt(to.get("ad_client_id").trim()));   //Client id
+		// TODO - Controlar que el ad_client_id se este asignado correctamente
+		
+		//rma.setAD_Client_ID(Integer.parseInt(to.get("ad_client_id").trim()));   //Client id
 		rma.setAD_Org_ID(Integer.parseInt(to.get("ad_org_id").trim()));   //org id
 		rma.setIsActive(true);
 		rma.setDocAction(DocAction.ACTION_Complete);
@@ -107,7 +109,7 @@ public class RmaFromInOut {
 				if (Integer.parseInt(productId) == pInOutLines[i].getM_Product_ID() )  // only processs the return product id	
 				{
 					MRMALine line = new MRMALine(Env.getCtx(), 0, trx.getTrxName());
-					line.setAD_Client_ID(Integer.parseInt(to.get("ad_client_id").trim())); 
+					//line.setAD_Client_ID(Integer.parseInt(to.get("ad_client_id").trim())); 
 					line.setAD_Org_ID(Integer.parseInt(to.get("ad_org_id").trim()));
 					line.setIsActive(true);
 					line.setM_RMA_ID(rma.get_ID());

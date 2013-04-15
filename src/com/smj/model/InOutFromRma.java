@@ -75,7 +75,7 @@ public class InOutFromRma {
         
         MInOut originalReceipt = rma.getShipment();
         MInOut inOut = new MInOut(Env.getCtx() ,0, trx.getTrxName());
-        inOut.setAD_Client_ID(originalReceipt.getAD_Client_ID());
+        //inOut.setAD_Client_ID(originalReceipt.getAD_Client_ID());
         inOut.setDateOrdered(new Timestamp((new Date()).getTime()));
         inOut.setDateAcct(new Timestamp((new Date()).getTime()));
         inOut.setMovementDate(new Timestamp((new Date()).getTime()));
@@ -124,7 +124,8 @@ public class InOutFromRma {
             if (rmaLine.getM_InOutLine_ID() != 0  && rmaLine.getM_Product_ID() != 0  )
             {
             	MInOutLine inOutLine = new MInOutLine(Env.getCtx() ,0, trx.getTrxName());
-                inOutLine.setAD_Client_ID(rmaLine.getAD_Client_ID());
+                // Client ID asignado en el constructor de la linea de entrega
+            	//inOutLine.setAD_Client_ID(rmaLine.getAD_Client_ID());
                 inOutLine.setAD_Org_ID(rmaLine.getAD_Org_ID());
                 inOutLine.setM_InOut_ID(inOut.getM_InOut_ID());
                 
