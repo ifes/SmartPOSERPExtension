@@ -89,8 +89,9 @@ public int getProductBomId(int productId, Trx trx,Properties ctx) {
 	public X_M_Production createProductionProcessFromProducto(Trx trx,
 			HashMap<String, Object> to, Properties ctx) {
 		X_M_Production producction = new X_M_Production(ctx, 0, trx.getTrxName());
-
-		producction.setAD_Client_ID((Integer)to.get("ad_client_id"));
+		//Noname Group - Corrección del  setCliente
+        
+		//producction.setAD_Client_ID((Integer)to.get("ad_client_id"));
 		producction.setAD_Org_ID((Integer)to.get("ad_org_id"));
 		producction.setIsActive(true);
 		producction.setName((String)to.get("productID") + " " + (new Date()));
@@ -109,7 +110,8 @@ public int getProductBomId(int productId, Trx trx,Properties ctx) {
 		X_M_ProductionPlan pp = new X_M_ProductionPlan(ctx, 0, trx.getTrxName());
 		
 		pp.setLine(10);
-		pp.setAD_Client_ID((Integer)to.get("ad_client_id"));
+		//Noname Group - Corrección del  setCliente
+		//pp.setAD_Client_ID((Integer)to.get("ad_client_id"));
 		pp.setAD_Org_ID((Integer)to.get("ad_org_id"));
 		pp.setM_Product_ID( productId);
 		pp.setProductionQty(qty);

@@ -719,7 +719,8 @@ System.out.println("M_Warehouse_ID:"+getWarehouse(dataLogin.get("ad_org_id"))) ;
 				order = new MOrder(Env.getCtx(), 0, trx.getTrxName());
 				order.setIsActive(true);
 				order.setIsSOTrx(true);
-				order.setAD_Client_ID(dataLogin.get("ad_client_id"));
+				//Noname Group - Corrección del  setCliente
+				//order.setAD_Client_ID(dataLogin.get("ad_client_id"));
 				order.setAD_Org_ID(dataLogin.get("ad_org_id"));
 				String poReference = ((String) datos.get("machine-hostname")).trim()+"_"+((String) datos.get("m_iTicketId")).trim();
 				order.setPOReference(poReference);
@@ -782,7 +783,8 @@ System.out.println("M_Warehouse_ID:"+getWarehouse(dataLogin.get("ad_org_id"))) ;
 						String product = (String) data.get("productID");						
 						line = new MOrderLine(Env.getCtx(), 0, trx.getTrxName());
 						line.setAD_Org_ID(dataLogin.get("ad_org_id"));
-						line.setAD_Client_ID(dataLogin.get("ad_client_id"));
+						//Noname Group - Corrección del  setCliente
+						//line.setAD_Client_ID(dataLogin.get("ad_client_id"));
 						line.setIsActive(true);
 						line.setC_Order_ID(orderId);
 						line.setC_BPartner_ID(dataLogin.get("c_bpartner_id"));
@@ -1028,8 +1030,8 @@ System.out.println("totalValue"+totalValue);
 
 		Boolean lok = false;
 		MPayment data = new MPayment(ctx, 0, trx.getTrxName());
-
-		data.setAD_Client_ID(dataLogin.get("ad_client_id"));
+		//Noname Group - Corrección del  setCliente
+		//data.setAD_Client_ID(dataLogin.get("ad_client_id"));
 System.out.println(dataLogin.get("ad_org_id"));
 		data.setAD_Org_ID(dataLogin.get("ad_org_id"));
 System.out.println(data.getAD_Org_ID());
@@ -1256,7 +1258,8 @@ System.out.println(data.getAD_Org_ID());
 		Boolean lok = false;
 			//crea la autorizacion de factura pagada
 			MAllocationHdr hdr = new MAllocationHdr(Env.getCtx(), 0, trx.getTrxName());
-			hdr.setAD_Client_ID(dataLogin.get("ad_client_id"));
+			//Noname Group - Corrección del  setCliente
+			//hdr.setAD_Client_ID(dataLogin.get("ad_client_id"));
 			hdr.setAD_Org_ID(dataLogin.get("ad_org_id"));
 			hdr.setIsActive(true);
 			hdr.setDescription("pago: "+id);
@@ -1276,7 +1279,8 @@ System.out.println(data.getAD_Org_ID());
 			}
 			//crea el registro de factura pagada
 			MAllocationLine line = new MAllocationLine(Env.getCtx(), 0, trx.getTrxName());
-			line.setAD_Client_ID(dataLogin.get("ad_client_id"));
+			//Noname Group - Corrección del  setCliente
+			//line.setAD_Client_ID(dataLogin.get("ad_client_id"));
 			line.setAD_Org_ID(dataLogin.get("ad_org_id"));
 			line.setIsActive(true);
 			line.setIsManual(false);
@@ -1338,7 +1342,8 @@ System.out.println(data.getAD_Org_ID());
 				dataLogin.put("ad_org_id", orgId);
 			}
 			MBPartner partner = new MBPartner(Env.getCtx(), code, trx.getTrxName());
-			partner.setAD_Client_ID(dataLogin.get("ad_client_id"));
+			//Noname Group - Corrección del  setCliente
+			//partner.setAD_Client_ID(dataLogin.get("ad_client_id"));
 			partner.setAD_Org_ID(dataLogin.get("ad_org_id"));
 			partner.setIsActive(true);
 			partner.setC_BP_Group_ID(dataLogin.get("c_bp_group_id"));
@@ -1426,8 +1431,8 @@ System.out.println(data.getAD_Org_ID());
 				localization = bl.getC_Location_ID();
 			else
 				bl.setC_Location_ID(localization);
-			
-			bl.setAD_Client_ID(dataLogin.get("ad_client_id"));
+			//Noname Group - Corrección del  setCliente
+			//bl.setAD_Client_ID(dataLogin.get("ad_client_id"));
 			bl.setAD_Org_ID(dataLogin.get("ad_org_id"));
 			bl.setPhone((String) to.get("phoneNumber"));
 			bl.setPhone2((String) to.get("phone2"));
@@ -1484,8 +1489,8 @@ System.out.println(data.getAD_Org_ID());
 			}else{
 				mUser = new MUser(partner);
 			}
-				
-			mUser.setAD_Client_ID(dataLogin.get("ad_client_id"));
+			//Noname Group - Corrección del  setCliente	
+			//mUser.setAD_Client_ID(dataLogin.get("ad_client_id"));
 			mUser.setAD_Org_ID(dataLogin.get("ad_org_id"));
 			mUser.setEMail(email);
 			Boolean lok = mUser.save();
@@ -1547,8 +1552,8 @@ System.out.println(data.getAD_Org_ID());
 		lc.setCity(cityName);
 		lc.setPostal((String) to.get("postal"));
 		lc.setAddress1(((String) to.get("address")).trim() + " ");
-
-		lc.setAD_Client_ID(dataLogin.get("ad_client_id"));
+		//Noname Group - Corrección del  setCliente
+		//lc.setAD_Client_ID(dataLogin.get("ad_client_id"));
 		lc.setAD_Org_ID(dataLogin.get("ad_org_id"));
 		
 		//System.out.println("Client_ID:"+lc.getAD_Client_ID());
@@ -1561,8 +1566,8 @@ System.out.println(data.getAD_Org_ID());
 				updateOrgZero(trx, dataLogin.get("ad_org_id"), dataLogin.get("ad_client_id"), code);
 				lc = null;
 				lc = new MLocation(Env.getCtx(), code, trx.getTrxName());
-				
-				lc.setAD_Client_ID(dataLogin.get("ad_client_id"));
+				//Noname Group - Corrección del  setCliente
+				//lc.setAD_Client_ID(dataLogin.get("ad_client_id"));
 				lc.setAD_Org_ID(dataLogin.get("ad_org_id"));
 				lc.setPostal((String) to.get("postal"));
 				lc.setAddress1(((String) to.get("address")).trim());
@@ -1749,7 +1754,8 @@ System.out.println(data.getAD_Org_ID());
 				order = new MOrder(Env.getCtx(), 0, trx.getTrxName());
 				order.setIsActive(true);
 				order.setIsSOTrx(true);
-				order.setAD_Client_ID(dataLogin.get("ad_client_id"));
+				//Noname Group - Corrección del  setCliente
+				//order.setAD_Client_ID(dataLogin.get("ad_client_id"));
 				order.setAD_Org_ID(dataLogin.get("ad_org_id"));
 				String poReference = ((String) datos.get("machine-hostname")).trim()+"_"+((String) datos.get("m_iTicketId")).trim();
 				order.setPOReference(poReference);
@@ -1813,7 +1819,8 @@ System.out.println(data.getAD_Org_ID());
 						String product = (String) data.get("productID");
 						line = new MOrderLine(Env.getCtx(), 0, trx.getTrxName());
 						line.setAD_Org_ID(dataLogin.get("ad_org_id"));
-						line.setAD_Client_ID(dataLogin.get("ad_client_id"));
+						//Noname Group - Corrección del  setCliente
+						//line.setAD_Client_ID(dataLogin.get("ad_client_id"));
 						line.setIsActive(true);
 						line.setC_Order_ID(orderId);
 						line.setC_BPartner_ID(dataLogin.get("c_bpartner_id"));
